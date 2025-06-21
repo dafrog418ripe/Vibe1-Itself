@@ -27,8 +27,8 @@ A modern, cross-platform desktop task management application built with PyQt5. M
 
 1. **Clone the repository**
    ```bash
-   git clone <your-repo-url>
-   cd task-manager
+   git clone https://github.com/dafrog418ripe/Vibe1-Itself.git
+   cd Vibe1-Itself
    ```
 
 2. **Install dependencies**
