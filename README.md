@@ -41,6 +41,55 @@ A modern, cross-platform desktop task management application built with PyQt5. M
    python task_manager_qt.py
    ```
 
+## Docker Installation
+
+### Prerequisites
+- Docker and Docker Compose installed
+- X11 server (for GUI display)
+
+### Running with Docker
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/dafrog418ripe/Vibe1-Itself.git
+   cd Vibe1-Itself
+   ```
+
+2. **Run with the provided script (Recommended)**
+   ```bash
+   ./run-docker.sh
+   ```
+
+3. **Or run manually**
+   ```bash
+   # Allow X11 connections
+   xhost +local:docker
+   
+   # Build and run
+   docker-compose up --build
+   
+   # Clean up when done
+   xhost -local:docker
+   ```
+
+### Docker Features
+- **Persistent Data**: Tasks are saved to `./tasks.json` on your host machine
+- **X11 Forwarding**: GUI displays on your local screen
+- **Isolated Environment**: Runs in a clean container environment
+
+### Troubleshooting Docker
+
+**"Cannot connect to X server"**
+- Ensure X11 is running: `echo $DISPLAY`
+- Try: `xhost +local:docker`
+
+**"Permission denied"**
+- Make sure the script is executable: `chmod +x run-docker.sh`
+
+**App doesn't start in Docker**
+- Check Docker logs: `docker-compose logs`
+- Ensure Docker has enough resources allocated
+
 ## Usage
 
 ### Adding Tasks
@@ -60,11 +109,17 @@ Tasks are automatically saved to `tasks.json` in the same directory as the appli
 ## Project Structure
 
 ```
-task-manager/
+Vibe1-Itself/
 ├── task_manager_qt.py    # Main PyQt5 application
 ├── task_manager.py       # Original Tkinter version (backup)
 ├── requirements.txt      # Python dependencies
 ├── README.md            # This file
+├── .gitignore           # Git ignore rules
+├── Dockerfile           # Docker container configuration
+├── docker-compose.yml   # Docker Compose configuration
+├── run-docker.sh        # Docker run script
+├── .dockerignore        # Docker ignore rules
+├── data/                # Data directory (created by Docker)
 └── tasks.json           # Task data (created automatically)
 ```
 

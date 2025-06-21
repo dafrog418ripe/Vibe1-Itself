@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  task-manager:
+    build: .
+    container_name: desktop-task-manager
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ./data:/app/data
+      - ./tasks.json:/app/tasks.json
+    network_mode: host
+    stdin_open: true
+    tty: true
+    restart: unless-stopped 
