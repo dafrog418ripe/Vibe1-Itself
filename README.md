@@ -119,6 +119,9 @@ Vibe1-Itself/
 ├── docker-compose.yml   # Docker Compose configuration
 ├── run-docker.sh        # Docker run script
 ├── .dockerignore        # Docker ignore rules
+├── test_task_manager.py # Unit tests
+├── test_integration.py  # Integration tests
+├── run_tests.py         # Test runner script
 ├── data/                # Data directory (created by Docker)
 └── tasks.json           # Task data (created automatically)
 ```
@@ -129,6 +132,59 @@ Vibe1-Itself/
 - **PyQt5**: Modern GUI framework for Python
 - **json**: Built-in Python module for data persistence
 - **os**: Built-in Python module for file operations
+
+### Testing
+
+The project includes comprehensive unit tests and integration tests to ensure reliability.
+
+#### Running Tests
+
+**Run all tests:**
+```bash
+python run_tests.py
+```
+
+**Run specific test files:**
+```bash
+# Unit tests only
+python -m unittest test_task_manager
+
+# Integration tests only
+python -m unittest test_integration
+
+# Run with verbose output
+python -m unittest -v test_task_manager
+```
+
+**Run individual test methods:**
+```bash
+python -m unittest test_task_manager.TestTaskManager.test_add_task_success
+```
+
+#### Test Coverage
+
+The test suite covers:
+- ✅ **Unit Tests** (`test_task_manager.py`)
+  - Task addition, editing, deletion
+  - Priority management and sorting
+  - Data persistence (save/load)
+  - UI state management
+  - Error handling
+
+- ✅ **Integration Tests** (`test_integration.py`)
+  - Complete workflow testing
+  - Cross-session data persistence
+  - UI interaction testing
+  - Error scenario handling
+
+#### Test Structure
+
+```
+Vibe1-Itself/
+├── test_task_manager.py    # Unit tests
+├── test_integration.py     # Integration tests
+└── run_tests.py           # Test runner script
+```
 
 ### Code Structure
 - `TaskManager` class: Main application window and logic
